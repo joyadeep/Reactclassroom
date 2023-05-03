@@ -5,4 +5,55 @@
 .App{
   background-color: rgb(221, 184, 255);
   text-align: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.header{
+  font-size: 52px;
+  font-weight: 500;
+}
+
+.counter{
+  height: 100%;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.card{
+  background-color: azure;
+  width: fit-content;
+  margin:0 auto;
+  padding:10px 50px;
+  border-radius: 9px;
+}
+
+.card , h1 {
+  font-size: 72px;
+}
+
+.buttonContainer{
+  border:2px solid black;
+  display: flex;
+  
+}
+
+.buttonContainer , button {
+  font-size: 20px;
+  border:transparent;
+  border-radius: 7px;
+  padding:10px 15px;
+  gap: 15px;
+  font-weight: 500;
+  color: white;
+  cursor:pointer;
+}
+
+.increment{
+  background-color: rgb(51, 152, 119);
+}
+
+.decrement{
+  background-color: rgb(152, 61, 36);
 }
