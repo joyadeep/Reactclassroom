@@ -1,22 +1,44 @@
-import {useState} from 'react'
-import logo from './logo.svg';
-import User from "./components/User"
-
-
-
-import './App.css';
-import Customer from './pages/Customer';
-import Admin from './pages/Admin';
-
-function App() {
-
-  
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Layout from "./pages/Layout";
+import AllPosts from "./pages/AllPosts";
+import SinglePost from "./pages/SinglePost";
+import Home from './pages/Home'
+import About from './pages/About'
+import CreatePost from "./pages/CreatePost";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+const App = () => {
   return (
-    <div className="App" >
-       <Customer />
-       <Admin/>
+    <div>
+    
+    <Routes>
+      <Route path="/" element={<Layout/>} >
+        <Route path="" element={<Home/>} />
+        <Route path="blogs" element={<AllPosts/>} />
+        <Route path="/:id" element={<SinglePost/>}  />
+        <Route path="about" element={<About/>}  />
+        <Route path="create" element={<CreatePost/>}  />
+      </Route>
+    </Routes>
+
+
+
+
+<ToastContainer
+position="top-right"
+autoClose={2000}
+hideProgressBar={true}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="colored"
+/>
     </div>
   );
-}
+};
 
 export default App;
