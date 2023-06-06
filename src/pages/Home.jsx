@@ -1,47 +1,62 @@
 import React,{useReducer, useState} from 'react'
 
-const initialState = 0
 
-const reducer=(state,action)=>{  //action => type : action name , payload : some data
-  switch(action.type){
-    case 'increment' :
-      return state + 1
-    
-      case 'decrement' :
-        return state - 1
-      
-      case 'add' :
-        return state + parseInt(action.payload) ;  // '100' -> 100  id , object , array ,string
-
+const todoReducer = (state,action)=>{
+  switch (action.type) {
+    case 'ADD_TODO':
+      return [...state,{id:Date.now(), text:action.payload , completed:false}]
+    case 'TOGGLE_TODO' :
+      return state.map(todo =>
+        todo.id === action.payload ? {...todo, completed:!todo.completed} : todo
+        )
+    case 'DELETE_TODO':    //     1      !=       1
+      return state.filter(todo=>todo.id !== action.payload) 
     default :
-      return new Error();
+      return
   }
 }
 
 const Home = () => {
-  //        0                                    0                                       
-  const [state,dispatch]=useReducer(reducer,initialState)
-
-  const [number,setNumber]=useState(0);
   
+  const [todos,dispatch]=useReducer(todoReducer,[])
+  const [data,setData]=useState('')
+  
+
+  const handleAddTodo=e=>{
+    e.preventDefault();
+    dispatch({type:'ADD_TODO',payload:data})
+    setData('')
+  }
+
+  const handleToggleTodo=id=>{
+    dispatch({type:'TOGGLE_TODO',payload:id})
+  }
+
+  const handleDeleteTodo = id=>{
+    dispatch({type:'DELETE_TODO',payload:id})
+  }
+
+
   return (
-    <div style={{textAlign:'center'}} >
-      <h1>{state}</h1>
+    <div style={{width:'50%',margin:'0 auto',textAlign:'center'}} >
+      <h1>Todo App</h1>
+      <form onSubmit={handleAddTodo} >
+          <input type="text" name="data" value={data} onChange={(e)=>setData(e.target.value)} />
+          <button>Add</button>
+      </form>
       
-      <button
-      onClick={()=>dispatch({type:'increment'})}
-      >
-        Increment</button>
-
-      <button
-      onClick={()=>dispatch({type:'decrement'})}
-      >Decrement</button>
-
-      <div style={{marginTop:'20px'}}>
-
-      <input type="number" name='number' value={number} onChange={(e)=>setNumber(e.target.value)}  placeholder='enter desired number' />
-      <button onClick={()=>dispatch({type:'add',payload:number})} >Add</button>
-      </div>
+      <ul>
+        {
+          todos.map(todo=>{
+            return (
+              <li key={todo.id} style={{textDecoration: todo.completed ? 'line-through': 'none'}} >
+                <span onClick={()=>handleToggleTodo(todo.id)} > {todo.text}</span>
+                <button onClick={()=>handleDeleteTodo(todo.id)} >Delete</button>
+              </li>
+            )
+          })
+        }
+      </ul>
     </div>
   )
 }
