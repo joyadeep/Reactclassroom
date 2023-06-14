@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { ThemeContext } from '../context/ThemeContext'
 
 const About = () => {
   return (
-    <div>About</div>
+    <div>
+      <h1>About Page</h1>
+    </div>
   )
 }
 

@@ -22,10 +22,16 @@ code {
 
 
 
-.app{
-  background: rgb(255, 255, 255);
+.app_light{
+  background: rgb(253, 253, 253);
   height: 100vh;
   width: 100vw;
+  color: black;
+}
+
+.app_dark{
+  background-color: black;
+  color: white;
 }
 
 nav {
@@ -63,7 +69,7 @@ nav {
 }
 
 .inactiveLinks{
-  background-color: black;
+  color: blue !important;
 }
 
 .activeLink{

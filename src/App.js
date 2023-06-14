@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./pages/Layout";
 import AllPosts from "./pages/AllPosts";
@@ -8,9 +8,11 @@ import About from './pages/About'
 import CreatePost from "./pages/CreatePost";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { ThemeContext } from "./context/ThemeContext";
 const App = () => {
+  const {isDark}=useContext(ThemeContext)
   return (
-    <div>
+    <div className={isDark?"app_dark":"app_light"}>
     
     <Routes>
       <Route path="/" element={<Layout/>} >
