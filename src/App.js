@@ -1,44 +1,30 @@
-import React, { useContext } from "react";
-import { Routes, Route } from "react-router-dom";
-import Layout from "./pages/Layout";
-import AllPosts from "./pages/AllPosts";
-import SinglePost from "./pages/SinglePost";
-import Home from './pages/Home'
-import About from './pages/About'
-import CreatePost from "./pages/CreatePost";
-import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
-import { ThemeContext } from "./context/ThemeContext";
-const App = () => {
-  const {isDark}=useContext(ThemeContext)
+import { useEffect, useState } from 'react';
+import './App.css'
+import {fetchWeatherData} from './api/weatherAPI'
+import Navbar from './components/Navbar';
+import Weather from './components/Weather';
+
+const App = () => {  
+  
+  const [city,setCity]=useState("");
+  const [data,setData]=useState({});
+  const [theme,setTheme]=useState("light");
+
+  useEffect(()=>{
+    fetchWeatherData(city).then((res)=>{
+      console.log("res data =",res);
+      setData(res)
+    })
+  },[city])
+
+  const toggleTheme=()=>{
+    setTheme(theme==="light"?"dark":"light")
+  }
+
   return (
-    <div className={isDark?"app_dark":"app_light"}>
-    
-    <Routes>
-      <Route path="/" element={<Layout/>} >
-        <Route path="" element={<Home/>} />
-        <Route path="blogs" element={<AllPosts/>} />
-        <Route path="/:id" element={<SinglePost/>}  />
-        <Route path="about" element={<About/>}  />
-        <Route path="create" element={<CreatePost/>}  />
-      </Route>
-    </Routes>
-
-
-
-
-<ToastContainer
-position="top-right"
-autoClose={2000}
-hideProgressBar={true}
-newestOnTop={false}
-closeOnClick
-rtl={false}
-pauseOnFocusLoss
-draggable
-pauseOnHover
-theme="colored"
-/>
+    <div className={`app ${theme} `} >
+      <Navbar setCity={setCity} theme={theme} toggleTheme={toggleTheme} />
+      <Weather data={data} />
     </div>
   );
 };
