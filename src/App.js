@@ -1,32 +1,15 @@
-import {useState} from 'react'
-import logo from './logo.svg';
-
-
-
-import './App.css';
+import "./App.css"
 
 function App() {
-
-  const [number,setNumber]=useState(0);
-
-  // const handleClick=()=>{
-  //   setNumber(number+1);
-  // }
   return (
-    <div className="App" >
-      {
-        console.log("number ==",number)
-      }
-      <h1 style={{fontSize:"52px"}}> {number} </h1>
-      <button
-       style={{fontSize:"20px",backgroundColor:"green",color:"white",padding:"5px",border:"0",borderRadius:"9px",cursor:"pointer"}}
-       
-       onClick={()=>{setNumber(number+1)}}
-       >
-        Increment</button>
-
-
+    <>
+    <div className=" text-6xl font-bold text-slate-700 flex justify-between pl-4 bg-slate-300 w-1/2 mx-auto text-center py-10 mt-5 rounded-md  ">
+      <p>item 1</p>
+      <p>item 2</p>
     </div>
+
+    <button className="rounded-md outline-none px-4 py-2 bg-blue-400 text-white" >Submit</button>
+    </>
   );
 }
 
