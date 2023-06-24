@@ -1,16 +1,19 @@
 import React, { useState } from 'react'
 import Navbar from '../components/Navbar'
+import { useNavigate } from 'react-router-dom';
 
 const Landing = () => {
     const [movie,setMovie]=useState("");
+    const navigate =useNavigate();
 
     const handleChange=e=>{
         setMovie(e.target.value);
     }
     const handleSubmit=e=>{
         e.preventDefault();
-        setMovie("")
         console.log("movie name =",movie);
+        navigate(`/movies/${movie}`)
+        setMovie("")
     }
 
   return (
