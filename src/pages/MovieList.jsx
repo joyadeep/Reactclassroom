@@ -9,7 +9,7 @@ const MovieList = () => {
     const {search} = useParams();
     const [list,setList]=useState([])
     const [isLoading,setIsLoading]=useState(false);
-    const [isError,setIsError]=useState(false);
+    const [isError,setIsError]=useState(null);
 
 
     useEffect(()=>{
@@ -19,14 +19,13 @@ const MovieList = () => {
             if(res.data.Response==="True")
                 setList(res.data.Search)
             else {
-                console.log("status set true")
-                setIsError(true)
+                console.log("status set true",res.data.Error)
+                setIsError(res.data.Error);
             }
         })
         .catch((error)=>console.log("error",error))
         .finally(()=>{
             setIsLoading(false);
-            setIsError(false);
         })
     },[])
 
@@ -35,19 +34,19 @@ const MovieList = () => {
   return (
     <>
     {
-        isError && <div className='text-black bg-slate-300 text-4xl' >Error here</div> 
-        // :
-    //     <div className='px-10 grid grid-cols-4 gap-x-3 gap-y-5 mt-10  ' >
+        isError ? <Error error={isError}/> 
+        :
+        <div className='px-10 grid grid-cols-1 md:grid-cols-4 gap-x-3 gap-y-5 mt-10  ' >
       
-    //     {
-    //         isLoading ? <Loading/> :
-    //         list?.map((movie,index)=>{ 
-    //             return (
-    //                 <MovieCard key={index} movie={movie} />
-    //             )
-    //         })
-    //     }
-    // </div>
+        {
+            isLoading ? <Loading/> :
+            list?.map((movie,index)=>{ 
+                return (
+                    <MovieCard key={index} movie={movie} />
+                )
+            })
+        }
+    </div>
     }
     </>
   )

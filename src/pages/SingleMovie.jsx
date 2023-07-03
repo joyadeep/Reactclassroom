@@ -21,11 +21,11 @@ const SingleMovie = () => {
   },[])
 
   return (
-    <div className='h-screen p-20'>
+    <div className='h-fit md:h-screen p-5 md:p-20'>
        {
         isLoading ? <Loading/> :
-        <div className='flex gap-2 h-full bg-slate-100 rounded-md overflow-hidden shadow-md shadow-slate-100' >
-        <img src={movie.Poster} alt="" className='w-1/2 object-cover' />
+        <div className='flex flex-col md:flex-row gap-2 h-full bg-slate-100 rounded-md overflow-hidden shadow-md shadow-slate-100' >
+        <img src={movie.Poster} alt="" className=' w-full md:w-1/2 object-cover' />
         <div className='' >
             <p className='text-2xl mb-3 font-medium' >{movie.Title}</p>
             <p className='text-xl flex items-center ' >{movie.Year} | <MdLocalMovies/> {movie.Runtime} | <AiFillStar className='text-yellow-400'/>  {movie.imdbRating} / 10 </p>
