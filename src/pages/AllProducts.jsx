@@ -3,6 +3,7 @@ import Slider from '../components/Slider'
 import { getProducts } from '../api/productsAPI';
 import ProductCard from '../components/ProductCard';
 import Categories from '../components/Categories';
+import Search from '../components/Search';
 
 const AllProducts = () => {
     const [products,setProducts]=useState([]);
@@ -15,10 +16,10 @@ const AllProducts = () => {
         })
     },[])
   return (
-    <>
+    <div className='min-h-screen pb-10'>
         <Slider/>
         <Categories/>
-        <h1 className='text-2xl font-semibold px-20 tracking-tighter'>All Products</h1>
+        <Search/>
         <div className='px-20 pt-5 grid grid-cols-4 gap-4'  >
            {
             products.map((product)=>(
@@ -26,7 +27,7 @@ const AllProducts = () => {
             ))
            }
         </div>
-    </>
+    </div>
   )
 }
 

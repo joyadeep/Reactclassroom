@@ -26,3 +26,12 @@ export const getProductByCategory=async(category)=>{
         console.log("error",error)
     }
 }
+
+export const getProductByID=async(id)=>{
+    try {
+        const result=await axios.get(`https://fakestoreapi.com/products/${id}`);
+        return result;        
+    } catch (error) {
+        console.log("error",error);
+    }
+}

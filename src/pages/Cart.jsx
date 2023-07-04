@@ -1,7 +1,9 @@
 import React from 'react'
 import CartCard from '../components/CartCard'
+import {useNavigate} from 'react-router-dom'
 
 const Cart = () => {
+    const navigate=useNavigate();
   return (
     <div className='px-20 py-32'>
         <h1 className='text-2xl font-semibold' >Cart</h1>
@@ -34,7 +36,7 @@ const Cart = () => {
                         <p>Total</p>
                         <p className='font-semibold'>$ 120</p> 
                     </div> 
-                    <button className='px-4 py-2 rounded-md bg-blue-500 text-white text-xl '>Checkout</button>
+                    <button onClick={()=>navigate("/checkout")} className='px-4 py-2 rounded-md bg-blue-500 text-white text-xl '>Checkout</button>
                 </div>
             </div>
 

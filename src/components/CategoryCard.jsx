@@ -1,8 +1,12 @@
 import React from 'react'
+import {useNavigate} from 'react-router-dom'
 
 const CategoryCard = ({category}) => {
+  const navigate=useNavigate();
   return (
-    <div className='h-fit text-white text-center border rounded-md py-5 cursor-pointer text-lg font-medium odd:bg-gradient-to-r from-indigo-500 to-pink-500 even:bg-gradient-to-r even:from-pink-500 even:to-indigo-500 hover:shadow-xl '>{category}</div>
+    <>
+      <div onClick={()=>navigate(`/category_products/${category}`)}  className=' w-fit text-slate-500 hover:text-black text-center cursor-pointer text-lg '>{category}</div>
+    </>
   )
 }
 
