@@ -1,31 +1,21 @@
-import {useState} from 'react'
-import logo from './logo.svg';
-
-
-
+import React,{useState} from 'react'
 import './App.css';
-
+import {useSelector,useDispatch} from 'react-redux'
+import {increment,decrement,incrementByAmount} from './features/counter/counterSlice'
 function App() {
 
-  const [number,setNumber]=useState(0);
+  const count=useSelector((state)=>state.counter.value);
+  const dispatch=useDispatch();
+  const [number,setNumber]=useState();
 
-  // const handleClick=()=>{
-  //   setNumber(number+1);
-  // }
   return (
     <div className="App" >
-      {
-        console.log("number ==",number)
-      }
-      <h1 style={{fontSize:"52px"}}> {number} </h1>
-      <button
-       style={{fontSize:"20px",backgroundColor:"green",color:"white",padding:"5px",border:"0",borderRadius:"9px",cursor:"pointer"}}
-       
-       onClick={()=>{setNumber(number+1)}}
-       >
-        Increment</button>
+        <h1>{count}</h1>
 
-
+        <button onClick={()=>dispatch(increment())}>Increment</button>
+        <button onClick={()=>dispatch(decrement())}>Decrement</button>
+        <input type="number" name="number" value={number} onChange={(e)=>setNumber(e.target.value)} />
+        <button onClick={()=>dispatch(incrementByAmount(number))} >Add</button>
     </div>
   );
 }
