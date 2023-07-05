@@ -6,6 +6,7 @@ import CategoryProduct from "./pages/CategoryProduct";
 import Checkout from "./pages/Checkout";
 import SingleProduct from "./pages/SingleProduct";
 import Layout from './Layout/Layout';
+import "react-loading-skeleton/dist/skeleton.css"
 
 function App() {
 

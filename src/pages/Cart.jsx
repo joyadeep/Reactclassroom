@@ -1,16 +1,20 @@
 import React from 'react'
 import CartCard from '../components/CartCard'
 import {useNavigate} from 'react-router-dom'
-
+import {useSelector,useDispatch} from 'react-redux';
 const Cart = () => {
     const navigate=useNavigate();
+    const cartItems=useSelector((state)=>state.cart.cart)
   return (
     <div className='px-20 py-32'>
         <h1 className='text-2xl font-semibold' >Cart</h1>
         <div className='flex gap-3'>
             <div className='w-8/12 flex flex-col gap-3 border rounded-md border-slate-300'>
-                <CartCard/>
-                <CartCard/>
+              {
+                cartItems.map((item)=>(
+                    <CartCard key={item.id} product={item} />
+                ))
+              }
             </div>
 
 

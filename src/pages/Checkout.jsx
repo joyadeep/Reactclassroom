@@ -74,7 +74,7 @@ const Checkout = () => {
             <button className='px-4 py-2 bg-blue-500 w-fit text-white rounded-md' >Ship To My Address</button>
         </form>
        </div>
-       <aside className='h-full border-4 border-slate-400 border-dotted w-2/3 rounded-md px-10 py-3'>
+       <aside className='h-full font-bill border-4 border-slate-400 border-dotted w-2/3 rounded-md px-10 py-3'>
           <h5 className='font-semibold text-2xl tracking-tighter text-slate-600 '>My Bill</h5>
           <div className='flex justify-between mt-5 text-lg text-slate-600'>
             <p>Name</p>
