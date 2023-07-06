@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import CardSkeleton from '../components/CardSkeleton';
 import Skeleton from 'react-loading-skeleton';
 import { ADD_ITEM } from '../features/cart/cartSlice';
-import {useSelector,useDispatch} from 'react-redux'  
+import {useDispatch} from 'react-redux'  
 const SingleProduct = () => {
   const [products,setProducts]=useState();
   const [singleProduct,setSingleProduct]=useState();
@@ -36,10 +36,10 @@ const SingleProduct = () => {
     }).finally(()=>setIsProductLoading(false))
   },[singleProduct?.category])
   return (
-    <div className='min-h-screen pt-10 flex flex-col px-20 pb-10'>
+    <div className='min-h-screen pt-16 flex flex-col px-5 md:px-20 pb-10'>
         {
             isLoading ? 
-            <div className='w-full h-96 flex gap-10 bg-slate-50 border px-5 py-3 rounded-md overflow-hidden'>
+            <div className='w-full h-fit flex flex-col md:flex-row gap-10 bg-slate-50 border px-5 py-3 rounded-md overflow-hidden'>
             <Skeleton height={350} width={300} />
             <div className='flex flex-col gap-4 w-full'>
                 <Skeleton height={30} />
@@ -48,8 +48,8 @@ const SingleProduct = () => {
             </div>
         </div>
             :
-            <div className='w-full h-96 flex gap-10 bg-slate-50 border px-5 py-3 rounded-md overflow-hidden'>
-            <img src={singleProduct?.image} alt="" className='w-1/3 object-contain' />
+            <div className='w-full h-fit md:h-96 flex flex-col md:flex-row gap-10 bg-slate-50 border px-5 py-3 rounded-md overflow-hidden'>
+            <img src={singleProduct?.image} alt="" className='w-2/3 md:w-1/3 mx-auto  object-contain' />
             <div className='flex flex-col gap-4'>
                 <h1 className='text-2xl'>{singleProduct?.title}</h1>
                 <p>{singleProduct?.description}</p>
@@ -64,7 +64,7 @@ const SingleProduct = () => {
 
         <div className='mt-10'>
           <h4 className='text-2xl text-slate-600 font-semibold capitalize'>products you might like</h4>
-          <div className='grid grid-cols-4 gap-4 pt-5'>
+          <div className='grid grid-cols-2 md:grid-cols-4 gap-4 pt-5'>
             {
                 isProductLoading ?
                 [1,2,3,4].map((index)=>(

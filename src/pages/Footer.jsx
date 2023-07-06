@@ -2,7 +2,7 @@ import React from 'react'
 import {FaCcPaypal,FaCcVisa,FaCcMastercard} from 'react-icons/fa'
 const Footer = () => {
   return (
-    <footer className='bg-slate-700 text-white px-20 py-5'>
+    <footer className='bg-slate-700 text-white px-5 md:px-20 py-5'>
        <div className='flex justify-between items-center'>
         <h3 className='font-semibold text-3xl tracking-tighter'>Shopping</h3>
        <div>

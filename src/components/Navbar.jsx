@@ -6,7 +6,7 @@ const Navbar = () => {
   const count=useSelector((state)=>state.cart.count)
   const navigate=useNavigate();
   return (
-    <header className='  h-14 bg-slate-50 shadow-md flex items-center justify-between px-20 '>
+    <header className=' absolute z-10  h-14 w-full bg-slate-50 shadow-md flex items-center justify-between px-5 md:px-20 '>
         <h1 className='text-4xl font-semibold text-slate-700 tracking-tighter'>Shopping</h1>
         <div  onClick={()=>navigate("/cart")}  className='relative cursor-pointer'>
         <PiShoppingCartLight size={32}/>

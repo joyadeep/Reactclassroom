@@ -1,15 +1,17 @@
-import React from 'react'
 import CartCard from '../components/CartCard'
 import {useNavigate} from 'react-router-dom'
-import {useSelector,useDispatch} from 'react-redux';
+import {useSelector} from 'react-redux';
+import { calculateTotalPrice } from '../features/cart/cartSlice';
 const Cart = () => {
     const navigate=useNavigate();
     const cartItems=useSelector((state)=>state.cart.cart)
+    const total=useSelector(calculateTotalPrice)
+   
   return (
-    <div className='px-20 py-32'>
+    <div className='min-h-screen px-5 md:px-20 py-5 md:py-32 pt-14'>
         <h1 className='text-2xl font-semibold' >Cart</h1>
-        <div className='flex gap-3'>
-            <div className='w-8/12 flex flex-col gap-3 border rounded-md border-slate-300'>
+        <div className='flex flex-col md:flex-row gap-3'>
+            <div className='w-full md:w-8/12 flex flex-col gap-3 border rounded-md border-slate-300'>
               {
                 cartItems.map((item)=>(
                     <CartCard key={item.id} product={item} />
@@ -18,7 +20,7 @@ const Cart = () => {
             </div>
 
 
-            <div className='w-4/12'>
+            <div className=' md:w-4/12'>
                 <div className='rounded-md border p-4'>
                     <p className='text-xl font-medium'>Have Coupon ?</p>
                     <div className='h-10 w-fit flex' >
@@ -30,7 +32,7 @@ const Cart = () => {
                 <div className='rounded-md border p-4 mt-3 text-center'>
                    <div className='flex justify-between text-xl'>
                         <p>Total Amount</p>
-                        <p className='font-semibold'>$ 120</p> 
+                        <p className='font-semibold'>$ {total}</p> 
                     </div> 
                    <div className='flex justify-between text-xl'>
                         <p>Discount</p>
@@ -38,9 +40,9 @@ const Cart = () => {
                     </div> 
                    <div className='flex justify-between text-xl'>
                         <p>Total</p>
-                        <p className='font-semibold'>$ 120</p> 
+                        <p className='font-semibold'>$ {total}</p> 
                     </div> 
-                    <button onClick={()=>navigate("/checkout")} className='px-4 py-2 rounded-md bg-blue-500 text-white text-xl '>Checkout</button>
+                    <button disabled={total===0} onClick={()=>navigate("/checkout")} className='px-4 py-2 rounded-md bg-blue-500 disabled:bg-blue-400 text-white text-xl '>Checkout</button>
                 </div>
             </div>
 

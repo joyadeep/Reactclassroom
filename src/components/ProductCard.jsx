@@ -9,7 +9,7 @@ const ProductCard = ({product}) => {
             <h4>{product.title}</h4>
             <div className='flex items-center justify-between'>
                 <h6 className='font-medium' >${product.price}</h6>
-                <h6 className='text-slate-400' >❤ {product.rating.rate}({product.rating.count})</h6>
+                <h6 className='text-slate-400' >❤ {product.rating?.rate}({product.rating?.count})</h6>
             </div>
         </div>
     </div>

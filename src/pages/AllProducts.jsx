@@ -5,29 +5,34 @@ import ProductCard from '../components/ProductCard';
 import Categories from '../components/Categories';
 import Search from '../components/Search';
 import CardSkeleton from '../components/CardSkeleton';
+import {ADD_PRODUCT_LIST } from '../features/product/productSlice';
+import { useSelector,useDispatch } from 'react-redux';
 
 const AllProducts = () => {
-    const [products,setProducts]=useState([]);
+    const products=useSelector((state)=>state.product.product)
     const [isLoading,setIsLoading]=useState(false);
+    const dispatch=useDispatch();
     useEffect(()=>{
+        products.length===0 &&
         setIsLoading(true);
         getProducts().then((res)=>{
             console.log("products =",res);
-            setProducts(res.data)
+            dispatch(ADD_PRODUCT_LIST(res.data))
         }).catch((error)=>{
             console.log("error",error)
         })
         .finally(()=>setIsLoading(false))
     },[])
   return (
-    <div className='min-h-screen pb-10'>
+    <div className='min-h-screen pb-10 pt-14'>
         <Slider/>
         <Categories/>
         <Search/>
-        <div className='px-20 pt-5 grid grid-cols-4 gap-4'  >
+        <div className=' px-5 md:px-20 pt-5 grid grid-cols-2 md:grid-cols-4 gap-4'  >
            {
             isLoading ? [1,2,3,4,5,6,7,8].map((index)=><CardSkeleton key={index} />) :
-            products.map((product)=>(
+            // console.log("products from store =",products)
+            products?.map((product)=>(
                 <ProductCard key={product.id}  product={product}  />
             ))
            }

@@ -18,9 +18,9 @@ const CategoryProduct = () => {
         }).finally(()=>setIsLoading(false))
     },[category])
   return (
-    <div className='px-20 py-10'>
+    <div className='px-5 min-h-screen md:px-20 py-10 pt-14'>
         <h3 className='text-2xl font-semibold tracking-tighter' >Category Product</h3>
-        <div className='grid grid-cols-4 gap-4 pt-5'>
+        <div className='grid grid-cols-2 md:grid-cols-4 gap-4 pt-5'>
             {
                 isLoading ?
                 [1,2,3,4].map((index)=>(
