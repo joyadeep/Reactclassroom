@@ -7,9 +7,6 @@ module.exports = {
     extend: {
       backgroundImage:{
         'model':"url('/src/assets/images/model.png')"
-      },
-      fontFamily:{
-        'bill': ['"Stick No Bills"', 'sans-serif'],
       }
     },
   },
