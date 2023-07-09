@@ -7,11 +7,13 @@ import Checkout from "./pages/Checkout";
 import SingleProduct from "./pages/SingleProduct";
 import Layout from './Layout/Layout';
 import "react-loading-skeleton/dist/skeleton.css"
+import {ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 
   return (
-      
+    <>
     <Routes>
       <Route path='/' element={<Layout/>} >
         <Route path='' element={<AllProducts/>} />
@@ -21,7 +23,22 @@ function App() {
         <Route path='checkout' element={<Checkout/>} />
       </Route>
     </Routes>
-      
+
+    <ToastContainer
+position="top-center"
+autoClose={1500}
+hideProgressBar={true}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="colored"
+/>
+
+
+    </>  
   );
 }
 

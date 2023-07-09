@@ -6,6 +6,9 @@ import CardSkeleton from '../components/CardSkeleton';
 import Skeleton from 'react-loading-skeleton';
 import { ADD_ITEM } from '../features/cart/cartSlice';
 import {useDispatch} from 'react-redux'  
+import {toast} from 'react-toastify'
+
+
 const SingleProduct = () => {
   const [products,setProducts]=useState();
   const [singleProduct,setSingleProduct]=useState();
@@ -35,6 +38,14 @@ const SingleProduct = () => {
         console.log("error",error)
     }).finally(()=>setIsProductLoading(false))
   },[singleProduct?.category])
+
+
+  const handleClick=(singleProduct)=>{
+    dispatch(ADD_ITEM(singleProduct));
+    toast.success("Item added to cart successfully !")
+
+  }
+
   return (
     <div className='min-h-screen pt-16 flex flex-col px-5 md:px-20 pb-10'>
         {
@@ -55,7 +66,7 @@ const SingleProduct = () => {
                 <p>{singleProduct?.description}</p>
                 <p className='font-semibold text-xl'>$ {singleProduct?.price}</p>
                 <div className='flex justify-evenly'>
-                    <button onClick={()=>dispatch(ADD_ITEM(singleProduct))} className='bg-green-600 text-white py-3 px-6 rounded-md text-xl'>Add to cart</button>
+                    <button onClick={()=>handleClick(singleProduct)} className='bg-green-600 text-white py-3 px-6 rounded-md text-xl'>Add to cart</button>
                     <button className='bg-blue-600 text-white py-3 px-6 rounded-md text-xl' >Buy Now</button>
                 </div>
             </div>

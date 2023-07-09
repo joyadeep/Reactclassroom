@@ -31,7 +31,6 @@ const AllProducts = () => {
         <div className=' px-5 md:px-20 pt-5 grid grid-cols-2 md:grid-cols-4 gap-4'  >
            {
             isLoading ? [1,2,3,4,5,6,7,8].map((index)=><CardSkeleton key={index} />) :
-            // console.log("products from store =",products)
             products?.map((product)=>(
                 <ProductCard key={product.id}  product={product}  />
             ))
