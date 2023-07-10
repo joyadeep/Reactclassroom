@@ -19,7 +19,7 @@ const Categories = () => {
             console.log("error",error)
         })
         .finally(()=>setIsLoading(false))
-    },[])
+    },[categories?.length,dispatch])
   return (
     <>
     <div className='flex justify-between px-5 overflow-x-scroll md:px-60 gap-5 pt-5 pb-10 no-scrollbar ' >

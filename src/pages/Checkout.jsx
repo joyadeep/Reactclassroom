@@ -5,7 +5,6 @@ import {calculateTotalPrice,EMPTY_CART} from '../features/cart/cartSlice'
 import {toast} from 'react-toastify';
 import {useNavigate} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
-import khalti from '../assets/images/khalti.png'
 const Checkout = () => {
   const [data,setData]=useState({name:'',email:'',address:'',phone:'',payment:''})
   const totalAmount=useSelector(calculateTotalPrice)
