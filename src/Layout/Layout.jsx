@@ -1,19 +1,16 @@
 import React from 'react'
-import {Outlet} from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 import Navbar from '../components/Navbar'
-import Footer from '../pages/Footer'
-import ScrollToTop from './ScrollToTop'
+import Footer from '../components/Footer'
 
 const Layout = () => {
   return (
     <>
-    <ScrollToTop>
-
         <Navbar/>
-        <Outlet/>
+        <div className='pt-16' >
+            <Outlet/>
+        </div>
         <Footer/>
-    </ScrollToTop>
-
     </>
   )
 }
