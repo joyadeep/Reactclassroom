@@ -5,6 +5,7 @@ import {calculateTotalPrice,EMPTY_CART} from '../features/cart/cartSlice'
 import {toast} from 'react-toastify';
 import {useNavigate} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
+import khalti from '../assets/images/khalti.png'
 const Checkout = () => {
   const [data,setData]=useState({name:'',email:'',address:'',phone:'',payment:''})
   const totalAmount=useSelector(calculateTotalPrice)
@@ -17,7 +18,6 @@ const Checkout = () => {
 
     const handleSubmit=(e)=>{
         e.preventDefault();
-        console.log("data=",data)
             let config = {
               publicKey: "test_public_key_1d64d4f9ac274085a20a42e3443c2c0b",
               productIdentity: 1,
@@ -83,8 +83,8 @@ const Checkout = () => {
                 <label htmlFor="phone" className='text-slate-500'>Payment Method</label>
                 <select name='payment' value={data.payment} onChange={handleChange} className='border outline-none rounded-md px-3 py-2 text-lg'>
                     <option value="">select payment method</option>
-                    <option value="cod">💵 cash on delivery</option>
-                    <option value="khalti"> 🧱 Khalti</option>
+                    <option value="cod">Cash On Delivery</option>
+                    <option value="khalti">Khalti</option>
                 </select>
             </div>
             <button className='px-4 py-2 bg-blue-500 w-fit text-white rounded-md' >Ship To My Address</button>
