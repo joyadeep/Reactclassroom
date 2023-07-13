@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 const Navbar = () => {
     const [count,setCount]=useState(9);
   return (
-    <header className='absolute z-10 h-14 bg-slate-50 shadow-md w-full px-5 flex justify-between items-center' >
+    <header className='absolute z-10 h-14 bg-slate-50 shadow-md w-full px-5 md:px-20 flex justify-between items-center' >
         <NavLink to={"#"} className='text-4xl font-semibold text-slate-700 tracking-tighter'>Shopping</NavLink>
         <div className='cursor-pointer relative'>
             <PiShoppingCart size={32} />
