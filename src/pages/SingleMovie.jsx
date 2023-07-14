@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import singlemovie from '../assets/images/netflix.jpg'
 import {MdLocalMovies} from 'react-icons/md';
 import {AiFillStar} from 'react-icons/ai';
 import {FaLanguage} from 'react-icons/fa'
@@ -18,7 +17,7 @@ const SingleMovie = () => {
     }).catch((error)=>{
       console.log("error",error);
     }).finally(()=>setIsLoading(false))
-  },[])
+  },[id])
 
   return (
     <div className='h-fit md:h-screen p-5 md:p-20'>

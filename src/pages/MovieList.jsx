@@ -27,7 +27,7 @@ const MovieList = () => {
         .finally(()=>{
             setIsLoading(false);
         })
-    },[])
+    },[search])
 
  
     
