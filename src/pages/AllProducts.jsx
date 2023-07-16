@@ -5,6 +5,7 @@ import ProductCard from '../components/ProductCard'
 import { getProducts } from '../api/productAPI'
 import { useSelector,useDispatch } from 'react-redux';
 import { ADD_PRODUCT_LIST } from '../features/product/productSlice'
+import Search from '../components/Search'
 
 const AllProducts = () => {
 
@@ -24,6 +25,7 @@ const AllProducts = () => {
     <div className='min-h-screen  pb-14' >
         <Slider/>
         <Categories/>
+        <Search/>
         <div className='px-5 md:px-20 pt-5 grid grid-cols-2 md:grid-cols-4 gap-4'>
             {
                 products.map((product,index)=>(
