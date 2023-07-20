@@ -1,10 +1,12 @@
 import React,{useState,useEffect} from 'react'
 import {useSelector} from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 const Search = () => {
     const productList=useSelector((state)=>state.product.products)
     const [query,setQuery]=useState("");
     const [searchData,setSearchData]=useState([]);
+    const navigate=useNavigate();
 
     useEffect(()=>{
         const searchResult=productList.filter((item)=>item.title.toLowerCase().includes(query.toLowerCase()))
@@ -23,7 +25,7 @@ const Search = () => {
                 {
                     searchData.length === 0 ? <h4 className='text-lg font-medium text-slate-600'>No Product Found !</h4>
                     : searchData.map((product)=>(
-                        <div className='cursor-pointer hover:bg-stone-100 py-1 flex items-center text-left'>
+                        <div onClick={()=>navigate(`/product/${product.id}`)} className='cursor-pointer hover:bg-stone-100 py-1 flex items-center text-left'>
                             <img src={product.image} alt="" className='w-14 h-14 object-contain' />
                             <div>
                              <p className='text-xs'>{product.title}</p>
