@@ -5,7 +5,7 @@ const ProductCard = ({product}) => {
   const navigate=useNavigate()
 
   const handleClick=(id)=>{
-    navigate(`product/${id}`)
+    navigate(`/product/${id}`)
   }
 
   return (
