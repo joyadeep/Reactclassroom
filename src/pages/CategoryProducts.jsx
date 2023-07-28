@@ -14,7 +14,7 @@ const CategoryProducts = () => {
         getProductByCategory(category_id).then((res)=>setProducts(res.data))
         .catch((error)=>console.log("error",error))
         .finally(()=>setIsLoading(false))
-    },[])
+    },[category_id])
 
 
   return (

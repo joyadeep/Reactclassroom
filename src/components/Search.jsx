@@ -25,7 +25,7 @@ const Search = () => {
 
         return (()=>clearTimeout(timeout))
         
-    },[query])
+    },[query,productList])
     // if query value changes -> rerun useeffect hook.
 
   return (

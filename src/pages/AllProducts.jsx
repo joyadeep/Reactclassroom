@@ -23,7 +23,7 @@ const AllProducts = () => {
         }).catch((error)=>{
             console.log("error",error);
         }).finally(()=>setIsLoading(false))
-    },[])
+    },[dispatch,products.length])
 
   return (
     <div className='min-h-screen  pb-14' >
